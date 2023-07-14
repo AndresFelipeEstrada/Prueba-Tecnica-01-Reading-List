@@ -6,7 +6,7 @@ import './listalectura.css'
 export const ListLectura = () => {
   const {
     readingList,
-    addToReadingList
+    removeFromReadingList
   } = useReadingList()
 
   return (
@@ -18,11 +18,12 @@ export const ListLectura = () => {
       <input id='cart' type='checkbox' hidden />
 
       <aside className='lectura'>
+        <h2>Lista de lectura</h2>
         {
           readingList.map(item => (
             <ReadingListItem
               key={item.ISBN}
-              addToList={() => addToReadingList(item)}
+              addToList={() => removeFromReadingList(item)}
               {...item}
             />
           ))

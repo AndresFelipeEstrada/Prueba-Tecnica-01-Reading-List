@@ -10,7 +10,7 @@ export const ReadingListItem = ({ title, cover, addToList }) => {
           <small>
             Titulo : {title}
           </small>
-          <button onClick={addToList}>+</button>
+          <button onClick={addToList}>Eliminar</button>
         </footer>
       </li>
     </>

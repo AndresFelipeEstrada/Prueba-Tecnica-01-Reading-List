@@ -4,9 +4,14 @@ import { useReadingList } from '../hooks/useReadingList'
 
 export const Products = ({ productList }) => {
   const {
-    addToReadingList
-
+    readingList,
+    addToReadingList,
+    removeFromReadingList
   } = useReadingList()
+
+  const inListRiding = ({ book }) => {
+    return readingList.some(item => item.ISBN === book.ISBN)
+  }
 
   return (
     <>
@@ -14,11 +19,14 @@ export const Products = ({ productList }) => {
         <ul className='books-list'>
           {
           productList.library.map(books => {
+            const isListRiding = inListRiding(books)
             return (
               <li key={books.book.ISBN}>
                 <h3>{books.book.title}</h3>
                 <img src={books.book.cover} alt='' />
-                <button onClick={() => addToReadingList(books.book)}>Por leer</button>
+                <button onClick={() => isListRiding ? removeFromReadingList(books.book) : addToReadingList(books.book)}>
+                  {isListRiding ? 'Quitar de lecturas' : 'Leer'}
+                </button>
               </li>
             )
           })

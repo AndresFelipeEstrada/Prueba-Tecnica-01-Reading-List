@@ -14,12 +14,17 @@ export const ReadingListProvider = ({ children }) => {
     ]))
   }, [])
 
+  const removeFromReadingList = useCallback((product) => {
+    return setReadingList(prevState => prevState.filter(item => item.ISBN !== product.ISBN))
+  }, [])
+
   const value = useMemo(
     () => ({
       readingList,
       setReadingList,
-      addToReadingList
-    }), [readingList, addToReadingList]
+      addToReadingList,
+      removeFromReadingList
+    }), [readingList, addToReadingList, removeFromReadingList]
   )
   return (
     <ReadingListContext.Provider value={value}>{children}</ReadingListContext.Provider>

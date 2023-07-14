@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import { ReadingListProvider } from './context/readingList.jsx'
+import { ReadingListProvider } from './context/ReadingList.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <ReadingListProvider>
