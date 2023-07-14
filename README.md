@@ -74,6 +74,10 @@ Buena suerte y ¡diviértete programando!
 
 ## Referencias
 
+-Prueba tecnica de @midudev : https://pruebastecnicas.com/
+
+-Prueba tecnica de @midudev : https://github.com/midudev/pruebas-tecnicas/tree/main/pruebas/01-reading-list
+
 - Diseño de Josh W. Comeau para una aplicación de libros pendientes de leer: https://twitter.com/JoshWComeau/status/1678893330480898049
 
 - Dribbble con rediseño de Goodreads: https://dribbble.com/shots/2523654-Books-listing-page-goodreads
@@ -81,3 +85,4 @@ Buena suerte y ¡diviértete programando!
 - Concepto de uso de arrastrar libros: https://dribbble.com/shots/19351938-Mybooks-Page-Board
 
 - Concepto de landing para una aplicación de libros: https://dribbble.com/shots/16279204-Book-Web-Store-Concept
+
