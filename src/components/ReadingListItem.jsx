@@ -1,4 +1,4 @@
-export const ReadingListItem = ({ title, cover, addToList }) => {
+export const ReadingListItem = ({ title, cover, deleteToList }) => {
   return (
     <>
       <li>
@@ -10,7 +10,7 @@ export const ReadingListItem = ({ title, cover, addToList }) => {
           <small>
             Titulo : {title}
           </small>
-          <button onClick={addToList}>Eliminar</button>
+          <button onClick={deleteToList}>Eliminar</button>
         </footer>
       </li>
     </>

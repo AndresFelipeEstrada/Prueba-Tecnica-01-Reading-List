@@ -4,10 +4,7 @@ import { ReadingListItem } from './ReadingListItem'
 import './listalectura.css'
 
 export const ListLectura = () => {
-  const {
-    readingList,
-    removeFromReadingList
-  } = useReadingList()
+  const { readingList, removeFromReadingList } = useReadingList()
 
   return (
 
@@ -19,11 +16,12 @@ export const ListLectura = () => {
 
       <aside className='lectura'>
         <h2>Lista de lectura</h2>
+        <p>Disponibles para leer: {readingList.length}</p>
         {
           readingList.map(item => (
             <ReadingListItem
               key={item.ISBN}
-              addToList={() => removeFromReadingList(item)}
+              deleteToList={() => removeFromReadingList(item)}
               {...item}
             />
           ))

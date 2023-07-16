@@ -5,7 +5,7 @@ export const FilterProductsContext = createContext()
 
 export const FilterProductsProvider = ({ children }) => {
   const [filter, setFilter] = useState({
-    category: 'Fantasía'
+    category: 'all'
   })
 
   const filterProducts = useCallback((products) => {
