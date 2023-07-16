@@ -18,7 +18,7 @@ export const Products = ({ productList }) => {
       <main className='products'>
         <ul className='books-list'>
           {
-          productList.library.map(books => {
+          productList.map(books => {
             const isListRiding = inListRiding(books)
             return (
               <li key={books.book.ISBN}>
