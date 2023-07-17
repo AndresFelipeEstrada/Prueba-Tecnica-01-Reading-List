@@ -5,14 +5,16 @@ export const FilterProductsContext = createContext()
 
 export const FilterProductsProvider = ({ children }) => {
   const [filter, setFilter] = useState({
+    minPages: 0,
     category: 'all'
   })
 
   const filterProducts = useCallback((products) => {
     return products.filter(product => {
       return (
-        filter.category === 'all' ||
-            product.book.genre === filter.category
+        product.book.pages >= filter.minPages &&
+        (filter.category === 'all' ||
+            product.book.genre === filter.category)
       )
     })
   }, [filter])

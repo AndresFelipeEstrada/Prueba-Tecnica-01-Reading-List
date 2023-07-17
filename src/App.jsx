@@ -5,14 +5,23 @@ import { useId } from 'react'
 import { useReadingList } from './hooks/useReadingList'
 
 function App () {
-  const { setFilter, filteredProducts } = useFilter()
+  const { filter, setFilter, filteredProducts } = useFilter()
   const { disponible } = useReadingList()
 
   const categoryId = useId()
+  const minPagesId = useId()
 
   const handleChangeCategory = (e) => {
     setFilter(prevState => ({
+      ...prevState,
       category: e.target.value
+    }))
+  }
+
+  const handleChangeminPages = (e) => {
+    setFilter(prevState => ({
+      ...prevState,
+      minPages: e.target.value
     }))
   }
 
@@ -31,6 +40,13 @@ function App () {
           <option value='Terror'>Terror</option>
         </select>
       </section>
+
+      <section>
+        <label htmlFor={minPagesId}>Paginas minimo del libro</label>
+        <input type='range' id={minPagesId} onChange={handleChangeminPages} value={filter.minPages} min='0' max='5000' />
+        <p>{filter.minPages}</p>
+      </section>
+
       <p>Libros disponibles: {disponible}
       </p>
       <Products productList={filteredProducts} />
