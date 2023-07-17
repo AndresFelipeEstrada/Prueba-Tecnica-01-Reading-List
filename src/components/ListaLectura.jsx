@@ -20,7 +20,7 @@ export const ListLectura = () => {
         {
           readingList.map(item => (
             <ReadingListItem
-              key={item.ISBN}
+              key={`list=item-${item.ISBN}`}
               deleteToList={() => removeFromReadingList(item)}
               {...item}
             />
