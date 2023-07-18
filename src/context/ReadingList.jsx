@@ -31,10 +31,6 @@ export const ReadingListProvider = ({ children }) => {
 
   const [disponible, setDisponible] = useState(getInitialValueAvaliable)
 
-  useEffect(() => {
-    window.localStorage.setItem(DISPONIBLE, disponible.toString())
-  }, [disponible])
-
   const addToReadingList = useCallback(booksList => {
     const newBooks = [...readingList, booksList]
     setReadingList(newBooks)
@@ -58,9 +54,41 @@ export const ReadingListProvider = ({ children }) => {
   }, [readingList])
 
   useEffect(() => {
-    // Update the local storage whenever readingList changes
     window.localStorage.setItem(READING_STORAGE, JSON.stringify(readingList))
   }, [readingList])
+
+  useEffect(() => {
+    window.localStorage.setItem(DISPONIBLE, disponible.toString())
+  }, [disponible])
+
+  useEffect(() => {
+    const handleStorageChange = (event) => {
+      if (event.key === READING_STORAGE) {
+        const newValue = JSON.parse(event.newValue)
+        setReadingList(newValue)
+      }
+    }
+    window.addEventListener('storage', handleStorageChange)
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
+    }
+  }, [])
+
+  useEffect(() => {
+    const handleDisponibleChange = (event) => {
+      if (event.key === 'disponible') {
+        const newValue = +event.newValue
+        window.localStorage.setItem(DISPONIBLE, newValue.toString())
+        setDisponible(newValue)
+      }
+    }
+
+    window.addEventListener('storage', handleDisponibleChange)
+
+    return () => {
+      window.removeEventListener('storage', handleDisponibleChange)
+    }
+  }, [])
 
   const value = useMemo(
     () => ({
